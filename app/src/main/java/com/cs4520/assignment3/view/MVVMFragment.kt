@@ -1,27 +1,25 @@
 package com.cs4520.assignment3.view
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.cs4520.assignment3.databinding.CalculatorLayoutBinding
+import com.cs4520.assignment3.R
 
 /**
  * The fragment to display the MVVM (model-view-viewmodel) implementation of the calculator.
  */
-class MVVMFragment : Fragment() {
-    private lateinit var binding: CalculatorLayoutBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return CalculatorLayoutBinding.inflate(inflater).also { binding = it }.root
+class MVVMFragment : AbstractCalculatorFragment(R.color.mvvm_fragment_background) {
+    override fun performAdd(op1: Double, op2: Double) {
+        TODO("Not yet implemented")
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun performSubtract(op1: Double, op2: Double) {
+        TODO("Not yet implemented")
     }
+
+    override fun performMultiply(op1: Double, op2: Double) {
+        TODO("Not yet implemented")
+    }
+
+    override fun performDivide(op1: Double, op2: Double) {
+        TODO("Not yet implemented")
+    }
+
 }
