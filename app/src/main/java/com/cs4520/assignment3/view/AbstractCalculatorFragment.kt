@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.cs4520.assignment3.R
 import com.cs4520.assignment3.databinding.CalculatorLayoutBinding
 
 abstract class AbstractCalculatorFragment(private val backgroundResource: Int) : Fragment() {
@@ -24,6 +25,7 @@ abstract class AbstractCalculatorFragment(private val backgroundResource: Int) :
         super.onViewCreated(view, savedInstanceState)
 
         binding.root.setBackgroundResource(backgroundResource)
+        binding.resultText.visibility = View.INVISIBLE
 
         binding.addButton.setOnClickListener(::buttonClicked)
         binding.subtractButton.setOnClickListener(::buttonClicked)
@@ -64,6 +66,15 @@ abstract class AbstractCalculatorFragment(private val backgroundResource: Int) :
             binding.multiplyButton -> performMultiply(op1, op2)
             binding.divideButton -> performDivide(op1, op2)
         }
+    }
+
+    protected fun updateResult(result: Double) {
+        binding.resultText.text = getString(R.string.result_text, result)
+        binding.resultText.visibility = View.VISIBLE
+    }
+
+    protected fun showInvalidResultMsg() {
+        Toast.makeText(context, R.string.invalid_result_msg, Toast.LENGTH_LONG).show()
     }
 
     abstract fun performAdd(op1: Double, op2: Double)
