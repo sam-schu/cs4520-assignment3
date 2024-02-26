@@ -3,8 +3,8 @@ package com.cs4520.assignment3.view
 import android.os.Bundle
 import android.view.View
 import com.cs4520.assignment3.R
-import com.cs4520.assignment3.logic.CalculatorPresenter
-import com.cs4520.assignment3.logic.Presenter
+import com.cs4520.assignment3.state.CalculatorPresenter
+import com.cs4520.assignment3.state.Presenter
 
 /**
  * The fragment to display the MVP (model-view-presenter) implementation of the calculator.

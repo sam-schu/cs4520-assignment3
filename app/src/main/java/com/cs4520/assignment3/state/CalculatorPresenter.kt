@@ -1,4 +1,4 @@
-package com.cs4520.assignment3.logic
+package com.cs4520.assignment3.state
 
 import com.cs4520.assignment3.view.MVPCalculatorView
 
