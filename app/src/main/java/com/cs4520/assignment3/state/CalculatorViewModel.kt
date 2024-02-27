@@ -3,7 +3,7 @@ package com.cs4520.assignment3.state
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CalculatorViewModel() : ViewModel() {
+class CalculatorViewModel : ViewModel() {
     val result = MutableLiveData<Double?>()
 
     fun onAdd(op1: Double, op2: Double) {

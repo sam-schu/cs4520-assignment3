@@ -33,12 +33,12 @@ abstract class AbstractCalculatorFragment(private val backgroundResource: Int) :
         binding.divideButton.setOnClickListener(::buttonClicked)
     }
 
-    private fun buttonClicked(v: View) {
+    private fun buttonClicked(viewClicked: View) {
         try {
             val op1: Double = getDoubleFrom(binding.numberInput1, 1)
             val op2: Double = getDoubleFrom(binding.numberInput2, 2)
 
-            performOp(v, op1, op2)
+            performOp(viewClicked, op1, op2)
         } catch (e: NumberFormatException) {
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         } finally {
@@ -50,7 +50,7 @@ abstract class AbstractCalculatorFragment(private val backgroundResource: Int) :
         try {
             return textField.text.toString().toDouble()
         } catch (e: NumberFormatException) {
-            throw NumberFormatException("Number input $fieldNo is not a valid number. Please try again.")
+            throw NumberFormatException(getString(R.string.invalid_number_input_msg, fieldNo))
         }
     }
 
@@ -77,11 +77,11 @@ abstract class AbstractCalculatorFragment(private val backgroundResource: Int) :
         Toast.makeText(context, R.string.invalid_result_msg, Toast.LENGTH_LONG).show()
     }
 
-    abstract fun performAdd(op1: Double, op2: Double)
+    protected abstract fun performAdd(op1: Double, op2: Double)
 
-    abstract fun performSubtract(op1: Double, op2: Double)
+    protected abstract fun performSubtract(op1: Double, op2: Double)
 
-    abstract fun performMultiply(op1: Double, op2: Double)
+    protected abstract fun performMultiply(op1: Double, op2: Double)
 
-    abstract fun performDivide(op1: Double, op2: Double)
+    protected abstract fun performDivide(op1: Double, op2: Double)
 }
