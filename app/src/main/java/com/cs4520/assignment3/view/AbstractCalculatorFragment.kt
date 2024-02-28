@@ -34,32 +34,16 @@ abstract class AbstractCalculatorFragment(private val backgroundResource: Int) :
     }
 
     private fun buttonClicked(viewClicked: View) {
-        try {
-            val op1: Double = getDoubleFrom(binding.numberInput1, 1)
-            val op2: Double = getDoubleFrom(binding.numberInput2, 2)
+        val op1: String = binding.numberInput1.text.toString()
+        val op2: String = binding.numberInput2.text.toString()
 
-            performOp(viewClicked, op1, op2)
-        } catch (e: NumberFormatException) {
-            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
-        } finally {
-            clearInputs()
-        }
-    }
-
-    private fun getDoubleFrom(textField: EditText, fieldNo: Int): Double {
-        try {
-            return textField.text.toString().toDouble()
-        } catch (e: NumberFormatException) {
-            throw NumberFormatException(getString(R.string.invalid_number_input_msg, fieldNo))
-        }
-    }
-
-    private fun clearInputs() {
         binding.numberInput1.setText("")
         binding.numberInput2.setText("")
+
+        performOp(viewClicked, op1, op2)
     }
 
-    private fun performOp(viewClicked: View, op1: Double, op2: Double) {
+    private fun performOp(viewClicked: View, op1: String, op2: String) {
         when (viewClicked) {
             binding.addButton -> performAdd(op1, op2)
             binding.subtractButton -> performSubtract(op1, op2)
@@ -73,15 +57,23 @@ abstract class AbstractCalculatorFragment(private val backgroundResource: Int) :
         binding.resultText.visibility = View.VISIBLE
     }
 
+    protected fun showInvalidOrMissingInputMsg() {
+        Toast.makeText(context, R.string.invalid_number_input_msg, Toast.LENGTH_LONG).show()
+    }
+
     protected fun showInvalidResultMsg() {
         Toast.makeText(context, R.string.invalid_result_msg, Toast.LENGTH_LONG).show()
     }
 
-    protected abstract fun performAdd(op1: Double, op2: Double)
+    protected fun showDivideByZeroMsg() {
+        Toast.makeText(context, R.string.divide_by_zero_msg, Toast.LENGTH_LONG).show()
+    }
 
-    protected abstract fun performSubtract(op1: Double, op2: Double)
+    protected abstract fun performAdd(op1: String, op2: String)
 
-    protected abstract fun performMultiply(op1: Double, op2: Double)
+    protected abstract fun performSubtract(op1: String, op2: String)
 
-    protected abstract fun performDivide(op1: Double, op2: Double)
+    protected abstract fun performMultiply(op1: String, op2: String)
+
+    protected abstract fun performDivide(op1: String, op2: String)
 }

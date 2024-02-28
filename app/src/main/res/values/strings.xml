@@ -10,9 +10,12 @@
     <string name="multiply_button_text">Multiply</string>
     <string name="divide_button_text">Divide</string>
     <string name="invalid_number_input_msg">
-        Number input %1$d is not a valid number. Please try again.
+        The number inputs do not contain valid numbers. Please try again.
     </string>
     <string name="invalid_result_msg">
         The result of the operation is invalid due to incorrect input. Please try again.
+    </string>
+    <string name="divide_by_zero_msg">
+        The operation could not be performed due to division by 0. Please try again.
     </string>
 </resources>

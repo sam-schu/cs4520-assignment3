@@ -18,20 +18,24 @@ class MVPFragment : AbstractCalculatorFragment(R.color.mvp_fragment_background),
         presenter = Presenter()
         presenter.setView(this)
     }
-    override fun performAdd(op1: Double, op2: Double) {
+    override fun performAdd(op1: String, op2: String) {
         presenter.onAdd(op1, op2)
     }
 
-    override fun performSubtract(op1: Double, op2: Double) {
+    override fun performSubtract(op1: String, op2: String) {
         presenter.onSubtract(op1, op2)
     }
 
-    override fun performMultiply(op1: Double, op2: Double) {
+    override fun performMultiply(op1: String, op2: String) {
         presenter.onMultiply(op1, op2)
     }
 
-    override fun performDivide(op1: Double, op2: Double) {
+    override fun performDivide(op1: String, op2: String) {
         presenter.onDivide(op1, op2)
+    }
+
+    override fun invalidOrMissingInput() {
+        showInvalidOrMissingInputMsg()
     }
 
     override fun newResult(result: Double) {
@@ -40,5 +44,9 @@ class MVPFragment : AbstractCalculatorFragment(R.color.mvp_fragment_background),
 
     override fun newInvalidResult() {
         showInvalidResultMsg()
+    }
+
+    override fun divideByZero() {
+        showDivideByZeroMsg()
     }
 }
