@@ -18,6 +18,7 @@ class MVPFragment : AbstractCalculatorFragment(R.color.mvp_fragment_background),
         presenter = Presenter()
         presenter.setView(this)
     }
+
     override fun performAdd(op1: String, op2: String) {
         presenter.onAdd(op1, op2)
     }
@@ -34,18 +35,30 @@ class MVPFragment : AbstractCalculatorFragment(R.color.mvp_fragment_background),
         presenter.onDivide(op1, op2)
     }
 
+    /**
+     * Displays a toast to tell the user that one of the inputs is invalid or missing.
+     */
     override fun invalidOrMissingInput() {
         showInvalidOrMissingInputMsg()
     }
 
+    /**
+     * Displays the given valid calculated result.
+     */
     override fun newResult(result: Double) {
         updateResult(result)
     }
 
+    /**
+     * Displays a toast to tell the user that the calculation result was invalid.
+     */
     override fun newInvalidResult() {
         showInvalidResultMsg()
     }
 
+    /**
+     * Displays a toast to tell the user that division by zero cannot be performed.
+     */
     override fun divideByZero() {
         showDivideByZeroMsg()
     }

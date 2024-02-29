@@ -21,6 +21,8 @@ class MVVMFragment : AbstractCalculatorFragment(R.color.mvvm_fragment_background
 
         viewModel = ViewModelProvider(this)[CalculatorViewModel::class.java]
 
+        // Makes sure that the appropriate action will be performed after a new calculation
+        // is attempted
         viewModel.result.observe(viewLifecycleOwner) {
             when (it) {
                 is InvalidInput -> showInvalidOrMissingInputMsg()
