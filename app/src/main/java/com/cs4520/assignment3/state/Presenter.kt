@@ -30,7 +30,7 @@ class Presenter : CalculatorPresenter {
 
     override fun onMultiply(op1: String, op2: String) {
         try {
-            result = op1.toDouble() - op2.toDouble()
+            result = op1.toDouble() * op2.toDouble()
             notifyViewAfterCalculation()
         } catch (e: NumberFormatException) {
             view?.invalidOrMissingInput()
