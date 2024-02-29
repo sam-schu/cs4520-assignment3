@@ -2,6 +2,10 @@ package com.cs4520.assignment3.state
 
 import com.cs4520.assignment3.view.MVPCalculatorView
 
+/**
+ * An implementation of a presenter for the MVP implementation of the calculator that computes and
+ * notifies a view of calculation results.
+ */
 class Presenter : CalculatorPresenter {
     private var view: MVPCalculatorView? = null
     private var result: Double = 0.0
@@ -52,6 +56,8 @@ class Presenter : CalculatorPresenter {
         }
     }
 
+    // Notifies the view of a calculation result using the correct method, depending on whether the
+    // result was a valid number or infinity/NaN
     private fun notifyViewAfterCalculation() {
         if (result.isFinite()) {
             view?.newResult(result)
